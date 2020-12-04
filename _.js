@@ -68,6 +68,44 @@ const _ = {
       }
       return newObject;
     },
+    findKey(object,predicate){
+      const numKeys = Object.keys(object).length;
+      let isPredicateTrue = false;
+      let returnValue = undefined;
+      for(const key in object){
+        isPredicateTrue = predicate(object[key]);
+        if(isPredicateTrue === true){
+          returnValue = key;
+          break;
+        }
+        else{
+          returnValue = undefined;
+        }
+      }
+      return returnValue;
+    },
+    drop(array, number){
+      let newArray = [];
+      if(number === undefined){number=1}
+      let i = number;
+      while(i<array.length){
+        newArray.push(array[i]);
+        i++;
+      }
+      return newArray;
+    },
+    dropWhile(array, predicate){
+      let newArray = [];
+      let startArray = 0;
+      for (let i = 0; i<array.length; i++){
+        if(predicate(array[i],i,array)===false){
+          startArray = i;
+          break;
+        }
+      }
+      newArray = this.drop(array,startArray);
+      return newArray;
+    },
   };
   
   
