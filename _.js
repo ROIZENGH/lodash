@@ -106,6 +106,18 @@ const _ = {
       newArray = this.drop(array,startArray);
       return newArray;
     },
+    chunk(array,number){
+      let newArray = [];
+      let lastElement = array.length-1;
+      if(number===undefined){
+        number=1;
+      }
+      let numberOfArrays = Math.ceil(array.length/number);
+      for(let i = 1; i<=numberOfArrays; i++ ){
+        newArray[(i-1)]=array.slice((i-1)*number,i*number);
+      }
+      return newArray;
+    },
   };
   
   
